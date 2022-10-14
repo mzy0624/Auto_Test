@@ -1,10 +1,10 @@
 T ?= 1000
-CC = g++
+CC = gcc
 OP ?=  
 FSANITIZE = address
 WALL ?= #-Wall
 WERROR ?= #-Werror
-CFLAGS = $(OP) $(WALL) $(WERROR) -std=c++17 -o
+CFLAGS = $(OP) $(WALL) $(WERROR) -o
 DFLAGS = -D__AUTO_TEST__ 
 
 make:
@@ -12,13 +12,13 @@ make:
 	@make totest;
 	@make std;
 data:
-	@$(CC) $(CFLAGS)   data.out      data.cpp $(DFLAGS)
+	@$(CC) $(CFLAGS)   data.out      data.c $(DFLAGS)
 totest:
-	@$(CC) $(CFLAGS) totest.out    totest.cpp $(DFLAGS) 	
+	@$(CC) $(CFLAGS) totest.out    totest.c $(DFLAGS) 	
 std:
-	@$(CC) $(CFLAGS)    std.out       std.cpp $(DFLAGS)
+	@$(CC) $(CFLAGS)    std.out       std.c $(DFLAGS)
 auto_test:
-	@$(CC) $(CFLAGS)  auto_test auto_test.cpp $(DFLAGS)
+	@$(CC) $(CFLAGS)  auto_test auto_test.c $(DFLAGS)
 run:
 	@if [ ! -e data.out ]; then 	\
 		make data;		\

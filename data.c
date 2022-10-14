@@ -1,13 +1,10 @@
-#include <iostream>
-#include <random>
-using namespace std;
+#include <stdio.h>
+#include <stdlib.h>
 #define INT_MIN 0x80000000
 #define INT_MAX 0x7fffffff
-random_device rd;
 int rand_int(int l, int r)
 {
-	uniform_int_distribution<int> dist(l, r);
-	return dist(rd);
+    return rand() % (r - l + 1) + l;
 }
 int main(void)
 {
